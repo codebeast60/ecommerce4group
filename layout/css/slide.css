@@ -1,0 +1,245 @@
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Tahoma, Arial;
+} */
+
+.slider-container {
+    margin: 10px auto;
+    width: 300px;
+    max-height: 300px;
+    position: relative;
+}
+
+.slider-container img {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 1;
+    display: none;
+}
+
+.slider-container img.active {
+    opacity: 1;
+    display: block;
+}
+
+.slider-container .slide-number {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    z-index: 2;
+    border-radius: 6px;
+    display: none;
+}
+
+.slider-controls {
+    width: 300px;
+    overflow: hidden;
+}
+
+.slider-controls .indicators {
+    width: 142px;
+    margin-left: 28px;
+    display: block;
+}
+
+.slider-controls .prev,
+.slider-controls .next {
+    background-color: #009688;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 5px;
+    user-select: none;
+    width: 0;
+    display: none;
+}
+
+.slider-controls .prev {
+    margin: 0;
+    position: absolute;
+    margin-top: 3px;
+    display: none;
+}
+
+.slider-controls .next {
+    margin: 0;
+    position: absolute;
+    margin-top: -25px;
+    display: none;
+}
+
+.slider-controls .prev.disabled,
+.slider-controls .next.disabled {
+    background-color: #278ee9;
+    cursor: no-drop;
+}
+
+.slider-controls .indicators ul {
+    list-style: none;
+    margin: 0;
+    text-align: center;
+}
+
+.slider-controls .indicators ul li {
+    display: inline-block;
+    background-color: #f6f6f6;
+    color: #333;
+    font-weight: bold;
+    height: 28px;
+    width: 28px;
+    border-radius: 4px;
+    margin: 0 2px;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.slider-controls .indicators ul li.active {
+    background-color: #278ee9;
+    color: #fff;
+}
+
+
+/* auto slide */
+
+.ads {
+    position: relative;
+    background: #000116;
+    width: 800px;
+    height: 300px;
+    margin: 100px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    left: -600px;
+}
+
+.ads .ad {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0% at 0 50%);
+}
+
+.ads .ad.active {
+    clip-path: circle(150% at 0 50%);
+    transition: 2s;
+}
+
+.ads .ad img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ads .ad .inf {
+    position: absolute;
+    color: #222;
+    background: transparent;
+    width: 75%;
+    top: 250px;
+    margin-left: 50px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
+}
+
+.ads .ad .inf h2 {
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.ads .ad .inf p {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.navigation {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.ads:hover .navigation {
+    opacity: 1;
+}
+
+.prev-btn,
+.next-btn {
+    z-index: 999;
+    font-size: 2em;
+    color: #222;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev-btn {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.next-btn {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.navigation-visibility {
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.navigation-visibility .ad-icon {
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.5);
+    width: 20px;
+    height: 10px;
+    transform: translateY(-50px);
+    margin: 0 6px;
+    border-radius: 2px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+}
+
+.navigation-visibility .ad-icon.active {
+    background: #4285f4;
+}
+
+@media (max-width: 900px) {
+    .ads {
+        width: 100%;
+        left: -50px;
+    }
+    .ads .ad .inf {
+        position: relative;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .ads .ad .inf h2 {
+        font-size: 1.8em;
+        line-height: 40px;
+    }
+    .ads .ad .inf p {
+        font-size: 0.9em;
+    }
+}
